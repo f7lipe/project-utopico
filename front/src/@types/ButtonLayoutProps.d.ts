@@ -1,0 +1,28 @@
+type ButtonLayoutProps = {
+    widht?: string;
+    height?: string;
+    color?: string;
+    hoverColor?: string;
+    activeColor?: string;
+    backgroundColor?: string;
+    hoverBackgroundColor?: string;
+    borderRadius?: string;
+    border?: string;
+    borderColor?: string;
+    boxShadow?: string;
+    padding?: string;
+    margin?: string;
+    fontSize?: string;
+    fontWeight?: string;
+    fontFamily?: string;
+    textAlign?: string;
+    lineHeight?: string;
+    letterSpacing?: string;
+    cursor?: string;
+    transition?: string;
+    hover?: () => void;
+    active?: () => void;
+    focus?: () => void;
+    disabled?: () => void;
+    children?: React.ReactNode;
+};
