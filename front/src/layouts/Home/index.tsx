@@ -1,15 +1,35 @@
-import { HStack } from "../../components/Stack View/HStack"
+import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
+import CollectionView from "../../components/Collection View"
 import Navbar from "../../components/Navbar"
 import Container from "../../components/Collection View/styles"
+import Topic from "../../components/Topic"
 
 const Home = () => {
+
+    const fakeTopics: Topic[] = [
+        {
+            id: '1',
+            title: 'Topic',
+        },
+        {
+            id: '2',
+            title: 'Something',
+        },
+        {
+            id: '3',
+            title: 'Else',
+        }
+    ]
+
     return (
         <Container>
             <Navbar />
-            <HStack margin="60px 20px" justify="flex-start" align="flex-start">
+            <VStack margin="60px 20px" justify="flex-start" align="flex-start">
                 <LargeHeading>Home</LargeHeading>
-            </HStack>
+                <CollectionView items={fakeTopics} renderItem={Topic} />
+
+            </VStack>
             
         </Container>
     )

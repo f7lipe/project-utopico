@@ -36,4 +36,10 @@ const Paragraph = styled.p`
     color: #000;
 `;
 
-export { LargeHeading, MediumHeading, SmallHeading, Title, Subtitle, Paragraph };
+const LargeSerif = styled.h1`
+    font-size: 2.8rem;
+    font-weight: lighter;
+    font-family: 'Courier New', Courier, monospace;
+    `
+
+export { LargeHeading, MediumHeading, SmallHeading, Title, Subtitle, Paragraph, LargeSerif };
