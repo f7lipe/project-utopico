@@ -4,7 +4,7 @@ import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading, Subtitle } from "../../components/Typografies"
 import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
-import {EditButton, TableOfContents, Item} from "./styles"
+import { EditButton, TableOfContents, Item } from "./styles"
 import { useEffect, useState } from "react"
 
 import { IoInformationCircleOutline, IoTrashOutline, IoArchiveOutline } from "react-icons/io5"
@@ -15,7 +15,7 @@ const TopicView = () => {
     const handleEdit = () => {
         setEditing(!editing)
     }
-    
+
     useEffect(() => {
         const parser = new DOMParser()
         const doc = parser.parseFromString(content, "text/html")
@@ -25,14 +25,14 @@ const TopicView = () => {
             toc.push(String(heading.textContent))
         })
         setToc(toc)
-        }, [content])
+    }, [content])
 
     return (
         <VStack
             align="center"
             width="100%">
             <HStack
-                widthMobile="100%"
+                widthMobile="95%"
                 width="50%"
                 justify="flex-start"
                 margin="0 0 30px 0">
@@ -41,7 +41,7 @@ const TopicView = () => {
                     <LargeHeading>Topic View</LargeHeading>
                     <HStack
                         width="150px"
-                        justify= {editing ? "flex-start" : "space-between"}
+                        justify={editing ? "flex-start" : "space-between"}
                         align="center"
                         margin="-50px 0 0 0">
                         <EditButton
@@ -64,16 +64,22 @@ const TopicView = () => {
                     </HStack>
                 </VStack>
             </HStack>
-            {
-                (!editing && toc?.length > 0) && (
-                    <TableOfContents>
-                    <Subtitle>Table of Contents</Subtitle>
-                    {
-                        toc.map((item, index) => (<Item key={index}>{item}</Item> ))
-                    }
-                </TableOfContents>
-                )
-            }
+            <HStack
+                widthMobile="95%"
+                width="50%"
+                justify="flex-start"
+                margin="0 0 30px 0">
+                {
+                    (!editing && toc?.length > 0) && (
+                        <TableOfContents>
+                            <Subtitle>Table of Contents</Subtitle>
+                            {
+                                toc.map((item, index) => (<Item key={index}>{item}</Item>))
+                            }
+                        </TableOfContents>
+                    )
+                }
+            </HStack>
             {editing ? <Tiptap /> : <Reader />}
         </VStack>
     )

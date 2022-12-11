@@ -16,8 +16,8 @@ const EditButton = styled.a`
 
 const TableOfContents = styled.ol`
     margin: 0;
-    padding: 10px;
-    width: 50%;
+    padding: 0 0 10px 10px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
