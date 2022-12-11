@@ -5,7 +5,7 @@ import { LargeHeading } from "../../components/Typografies"
 import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
 
-const View = () => {
+const TopicView = () => {
     const { editing } = useEditor()
     return (
         <VStack align="center" width="100%">
@@ -17,4 +17,4 @@ const View = () => {
     )
 }
 
-export default View
+export default TopicView
