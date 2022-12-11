@@ -6,18 +6,21 @@ import { VStack } from '../Stack View/VStack'
 import MenuBar from './menu'
 
 const Tiptap = () => {
-    const { setEditing, setContent, editing, content } = useEditor()
+    const { setContent, content } = useEditor()
 
     const editor = tipTapEditor({
       extensions: [StarterKit, Highlight],
       content: content || '<p>Write something</p>',
-      /*
+      
         onUpdate: ({ editor }) => {
-        const updatedContent = editor.getHTML()
-        setContent(updatedContent)
+          setTimeout(() => {
+            const updatedContent = editor.getHTML()
+            // use api to update content then update state
+            setContent(updatedContent)
+          }, 3000)
       }
-      */
-    }, [content])
+    
+    }, [])
 
     return (
       <div className='editor' >
