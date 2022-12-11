@@ -1,18 +1,32 @@
 import Tiptap from "../../components/Editor"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
-import { LargeHeading } from "../../components/Typografies"
+import { LargeHeading, Subtitle } from "../../components/Typografies"
 import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
-import EditButton from "./styles"
+import {EditButton, TableOfContents, Item} from "./styles"
+import { useEffect, useState } from "react"
 
 import { IoInformationCircleOutline, IoTrashOutline, IoArchiveOutline } from "react-icons/io5"
 
 const TopicView = () => {
-    const { editing, setEditing } = useEditor()
+    const { editing, setEditing, content } = useEditor()
+    const [toc, setToc] = useState<String[] | []>([])
     const handleEdit = () => {
         setEditing(!editing)
     }
+    
+    useEffect(() => {
+        const parser = new DOMParser()
+        const doc = parser.parseFromString(content, "text/html")
+        const headings = doc.querySelectorAll("h2")
+        const toc = [] as string[]
+        headings.forEach((heading) => {
+            toc.push(String(heading.textContent))
+        })
+        setToc(toc)
+        }, [content])
+
     return (
         <VStack
             align="center"
@@ -50,6 +64,16 @@ const TopicView = () => {
                     </HStack>
                 </VStack>
             </HStack>
+            {
+                (!editing && toc?.length > 0) && (
+                    <TableOfContents>
+                    <Subtitle>Table of Contents</Subtitle>
+                    {
+                        toc.map((item, index) => (<Item key={index}>{item}</Item> ))
+                    }
+                </TableOfContents>
+                )
+            }
             {editing ? <Tiptap /> : <Reader />}
         </VStack>
     )

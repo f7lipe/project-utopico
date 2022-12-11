@@ -14,4 +14,26 @@ const EditButton = styled.a`
     cursor: pointer;
 `
 
-export default EditButton
+const TableOfContents = styled.ol`
+    margin: 0;
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: 2px solid #1f1f1f;
+    border-radius: 5px;
+`
+
+const Item = styled.li`
+    margin-left: 20px;  
+    margin-bottom: 10px;
+    padding: 0;
+    font-size: large;
+    font-weight: 500;
+    color: #1f1f1f;
+    cursor: pointer;
+`
+
+export {EditButton, TableOfContents, Item}
