@@ -27,7 +27,7 @@ const TopicView = () => {
                     <LargeHeading>Topic View</LargeHeading>
                     <HStack
                         width="150px"
-                        justify="space-between"
+                        justify= {editing ? "flex-start" : "space-between"}
                         align="center"
                         margin="-50px 0 0 0">
                         <EditButton
@@ -37,10 +37,16 @@ const TopicView = () => {
                         </EditButton>
                         <IoInformationCircleOutline
                             size={20} />
-                        <IoArchiveOutline
-                            size={20} />
-                        <IoTrashOutline
-                            size={20} />
+                        {
+                            !editing && (
+                                <>
+                                    <IoArchiveOutline
+                                        size={20} />
+                                    <IoTrashOutline
+                                        size={20} />
+                                </>
+                            )
+                        }
                     </HStack>
                 </VStack>
             </HStack>
