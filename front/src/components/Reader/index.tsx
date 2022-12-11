@@ -1,14 +1,16 @@
 import useEditor from "../../hooks/useEditor"
+import { HStack } from "../Stack View/HStack"
 
 const Reader = () => {
-    const { content, editing, setEditing } = useEditor()
-    const handleEdit = () => {
-        setEditing(!editing)
-    }
+    const { content } = useEditor()
+
     return (
-        <div onClick={handleEdit}>
+        <HStack width="50%" 
+        justify="flex-start"
+        widthMobile="100%"
+        padding="10px">
             <div dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
+        </HStack>
     )
 }
 
