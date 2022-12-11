@@ -6,7 +6,7 @@ import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
 import EditButton from "./styles"
 
-import { IoInformationCircleOutline } from "react-icons/io5"
+import { IoInformationCircleOutline, IoTrashOutline, IoArchiveOutline } from "react-icons/io5"
 
 const TopicView = () => {
     const { editing, setEditing } = useEditor()
@@ -26,7 +26,8 @@ const TopicView = () => {
                     align="flex-start">
                     <LargeHeading>Topic View</LargeHeading>
                     <HStack
-                        justify="flex-start"
+                        width="150px"
+                        justify="space-between"
                         align="center"
                         margin="-50px 0 0 0">
                         <EditButton
@@ -35,6 +36,10 @@ const TopicView = () => {
                             {editing ? 'Done' : 'Edit'}
                         </EditButton>
                         <IoInformationCircleOutline
+                            size={20} />
+                        <IoArchiveOutline
+                            size={20} />
+                        <IoTrashOutline
                             size={20} />
                     </HStack>
                 </VStack>
