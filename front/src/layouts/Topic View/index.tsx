@@ -72,7 +72,7 @@ const TopicView = () => {
                 {
                     (!editing && toc?.length > 0) && (
                         <TableOfContents>
-                            <Subtitle>Table of Contents</Subtitle>
+                            <Subtitle>TABLE OF CONTENTS</Subtitle>
                             {
                                 toc.map((item, index) => (<Item key={index}>{item}</Item>))
                             }
