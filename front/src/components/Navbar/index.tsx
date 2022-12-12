@@ -1,9 +1,22 @@
 import { Nav, Beta, NavLinks, NavLink } from "./styles"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { HStack } from "../Stack View/HStack"
-import {AiOutlineGithub, AiOutlineSearch} from "react-icons/ai"
+import { AiOutlineGithub, AiOutlineSearch } from "react-icons/ai"
+import { RxText } from "react-icons/rx"
+
+enum Paths {
+    SEARCH = "/search",
+    GITHUB = "/github",
+    LOGOUT = "/",
+    TOPICS = "/topics"
+}
 
 const Navbar = () => {
+    const location = useLocation();
+    const isActive = (buttonPath: string) => {
+        return location.pathname === buttonPath;
+      }
+
     return (
         <Nav>
             <HStack width="150px">
@@ -11,16 +24,20 @@ const Navbar = () => {
                 <Beta>1.0 BETA</Beta>
             </HStack>
             <NavLinks>
-                <NavLink>
-                    <AiOutlineSearch size="1.5rem"/>
-                    <Link to="/search">Search</Link>
+                <NavLink active={isActive(Paths.TOPICS)}>
+                    <RxText size="1.5rem" />
+                    <Link to={Paths.TOPICS}>Topics</Link>
+                </NavLink>
+                <NavLink active={isActive(Paths.SEARCH)}>
+                    <AiOutlineSearch size="1.5rem" />
+                    <Link to={Paths.SEARCH}>Search</Link>
                 </NavLink>
                 <NavLink>
                     <AiOutlineGithub size="1.5rem" />
-                    <Link to="/github">GitHub</Link>
+                    <Link to={Paths.GITHUB}>GitHub</Link>
                 </NavLink>
                 <NavLink>
-                    <Link to="/">Logout</Link>
+                    <Link to={Paths.LOGOUT}>Logout</Link>
                 </NavLink>
             </NavLinks>
         </Nav>

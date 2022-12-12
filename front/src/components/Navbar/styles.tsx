@@ -33,11 +33,18 @@ const NavLinks = styled.ul`
     list-style: none;
 `;
 
+interface NavLinkProps {
+    active?: boolean;
+}
+
 const NavLink = styled.li`
 
     height: 40px;
     margin: 0 1rem;
     font-weight: 500;
+    background-color: ${(props: NavLinkProps) => props.active ? "#fbf59cba" : "transparent"};
+    border-radius: 10px;
+    padding: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
