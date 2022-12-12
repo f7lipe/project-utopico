@@ -35,9 +35,9 @@ const TopicView = () => {
                 <Navbar />
             <HStack
                 widthMobile="95%"
-                width="50%"
+                width="70%"
                 justify="flex-start"
-                margin="0 0 30px 0">
+                margin="50px 0 30px 0">
                 <VStack
                     align="flex-start">
                     <LargeHeading>Topic View</LargeHeading>
@@ -68,7 +68,7 @@ const TopicView = () => {
             </HStack>
             <HStack
                 widthMobile="95%"
-                width="50%"
+                width="70%"
                 justify="flex-start"
                 margin="0 0 30px 0">
                 {

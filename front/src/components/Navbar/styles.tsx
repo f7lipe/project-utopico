@@ -8,6 +8,7 @@ const Nav = styled.nav`
     align-items: center;
     padding: 0 2rem;
     color: #000000;
+    background-color: white;
     position: fixed;
     top: 0;
     left: 0;

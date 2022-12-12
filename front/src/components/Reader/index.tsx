@@ -5,7 +5,7 @@ const Reader = () => {
     const { content } = useEditor()
 
     return (
-        <HStack width="50%" 
+        <HStack width="70%" 
         justify="flex-start"
         widthMobile="100%"
         padding="10px">
