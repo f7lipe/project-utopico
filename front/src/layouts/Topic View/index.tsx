@@ -6,6 +6,7 @@ import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
 import { EditButton, TableOfContents, Item } from "./styles"
 import { useEffect, useState } from "react"
+import Navbar from "../../components/Navbar"
 
 import { IoInformationCircleOutline, IoTrashOutline, IoArchiveOutline } from "react-icons/io5"
 
@@ -31,6 +32,7 @@ const TopicView = () => {
         <VStack
             align="center"
             width="100%">
+                <Navbar />
             <HStack
                 widthMobile="95%"
                 width="50%"

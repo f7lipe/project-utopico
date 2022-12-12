@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar"
 import Container from "../../components/Collection View/styles"
 import Topic from "../../components/Topic"
 
-const Home = () => {
+const Topics = () => {
 
     const fakeTopics: Topic[] = [
         {
@@ -35,4 +35,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Topics

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Home from "./layouts/Home"
+import Topics from "./layouts/Topics"
 import TopicView from "./layouts/Topic View"
 import { EditorProvider } from "./contexts/EditorContext"
 
@@ -7,8 +7,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/topic" element={
+        <Route path="/topics" element={<Topics />} />
+        <Route path="/topics/:id" element={
           <EditorProvider>
             <TopicView />
           </EditorProvider>} />
