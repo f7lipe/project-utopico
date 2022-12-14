@@ -1,7 +1,8 @@
 type Topic = {
     id: string;
     title: string;
-    description?: string;
+    content?: string;
+    related?: string[];
     logo?: string;
     color?: string;
     createdAt?: string;
