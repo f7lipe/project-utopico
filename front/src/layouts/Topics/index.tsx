@@ -5,8 +5,12 @@ import Navbar from "../../components/Navbar"
 import { Container, TopicToolbar, NewTopicButton } from "./styles"
 import Topic from "../../components/Topic"
 import { RxText } from "react-icons/rx"
+import NewTopic from "../../components/New Topic"
+import { useState } from "react"
 
 const Topics = () => {
+
+    const [open, setOpen] = useState(false)
 
     const fakeTopics: Topic[] = [
         {
@@ -46,6 +50,7 @@ const Topics = () => {
     return (
         <Container>
             <Navbar />
+            {open && <NewTopic setOpen={setOpen}/>}
             <VStack 
                     width="70%"
                     widthMobile="100%" 
@@ -54,7 +59,7 @@ const Topics = () => {
                     justify="flex-start" 
                     align="flex-start">
                 <TopicToolbar>
-                    <NewTopicButton>
+                    <NewTopicButton onClick={()=> setOpen(!open)}>
                         <RxText size={30} color={"blue"}/>
                         New Topic
                     </NewTopicButton>
@@ -63,7 +68,6 @@ const Topics = () => {
                 <CollectionView items={fakeTopics} renderItem={Topic} />
 
             </VStack>
-
         </Container>
     )
 }
