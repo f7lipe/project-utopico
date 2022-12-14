@@ -4,13 +4,7 @@ import { Body } from "./styles"
 import {  SmallHeading, LargeSerif } from "../Typografies"
 import { useNavigate } from "react-router-dom"
 
-interface ITopicProps {
-    title: string
-    logo?: string
-    id: string
-}
-
-const Topic = ({ title, logo, id }: ITopicProps) => {
+const Topic = ({ title, logo, id }: Topic) => {
     const navigate = useNavigate()
     const redirectToTopic = () => {
         navigate(`/topics/${id}`)
