@@ -13,4 +13,8 @@ export const VStack = styled.section`
     border: ${(props: StackViewProps) => props.border || "none"};
     border-radius: ${(props: StackViewProps) => props.borderRadius || "0"};
     background: ${(props: StackViewProps) => props.background || "none"};
+
+    @media (max-width: 768px) {
+        width: ${(props: StackViewProps) => props.widthMobile};
+    }
 `;
