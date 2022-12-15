@@ -12,9 +12,10 @@ const MediumHeading = styled.h2`
     color: #000;
 `;
 
-const SmallHeading = styled.h3`
-    font-size: 1.5rem;
+const SmallHeading = styled.h4`
+    font-size: auto;
     font-weight: 700;
+    text-align: center;
     color: #000;
 `;
 
