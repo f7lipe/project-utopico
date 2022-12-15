@@ -2,9 +2,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Topics from "./layouts/Topics"
 import TopicView from "./layouts/Topic View"
 import { EditorProvider } from "./contexts/EditorContext"
+import { TopicProvider } from "./contexts/TopicContext"
 
 function App() {
   return (
+    <TopicProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/topics" element={<Topics />} />
@@ -14,6 +16,7 @@ function App() {
           </EditorProvider>} />
       </Routes>
     </BrowserRouter>
+    </TopicProvider>
   );
 }
 

@@ -6,46 +6,18 @@ import { Container, TopicToolbar, NewTopicButton } from "./styles"
 import Topic from "../../components/Topic"
 import { RxText } from "react-icons/rx"
 import NewTopic from "../../components/New Topic"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import useTopic from "../../hooks/useTopic"
+
 
 const Topics = () => {
 
     const [open, setOpen] = useState(false)
+    const { topics, getTopics} = useTopic()
 
-    const fakeTopics: Topic[] = [
-        {
-            id: '1',
-            title: 'Topic',
-        },
-        {
-            id: '2',
-            title: 'Something',
-        },
-        {
-            id: '3',
-            title: 'Else',
-        },
-        {
-            id: '4',
-            title: 'Else',
-        },
-        {
-            id: '5',
-            title: 'Else',
-        },
-        {
-            id: '6',
-            title: 'Else',
-        },
-                {
-            id: '7',
-            title: 'Else',
-        },
-        {
-            id: '8',
-            title: 'Else',
-        }
-    ]
+    useEffect(() => {   
+        getTopics()
+    }, [])
 
     return (
         <Container>
@@ -65,7 +37,7 @@ const Topics = () => {
                     </NewTopicButton>
                 </TopicToolbar>
                 <LargeHeading>Home</LargeHeading>
-                <CollectionView items={fakeTopics} renderItem={Topic} />
+                <CollectionView items={topics} renderItem={Topic} />
 
             </VStack>
         </Container>
