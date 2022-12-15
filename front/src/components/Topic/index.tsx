@@ -11,8 +11,8 @@ const Topic = ({ title, logo, id }: Topic) => {
     }
     return (
         <Body onClick={redirectToTopic}>
-            <VStack height="50px" align="center" justify="center">
-                <HStack>
+            <VStack align="center" justify="center">
+                <HStack height="60%">
                     {
                         logo ?
                             <img src={logo} alt="topic logo" />
@@ -20,7 +20,7 @@ const Topic = ({ title, logo, id }: Topic) => {
                             <LargeSerif>{title[0]}</LargeSerif>
                     }
                 </HStack>
-                <HStack>
+                <HStack height="40%" align="center" justify="center" padding="10px">
                     <SmallHeading>{title}</SmallHeading>
                 </HStack>
             </VStack>

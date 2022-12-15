@@ -12,6 +12,10 @@ const Body = styled.div`
     align-items: center;
     user-select: none;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+        background-color: #cbfeaa;
+    }
 `
 
 export { Body }
