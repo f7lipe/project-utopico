@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-//import useEditor  from '../hooks/useEditor'
 import axios from "axios"
 
 
@@ -11,7 +10,9 @@ interface ITopicContext {
     deleteTopic?: (_id: string) => Promise<void>
     archiveTopic?: (_id: string) => Promise<void>
     topics: Topic[]
+    topic: Topic
     isEditing: boolean
+    setIsEditing: (editing: boolean) => void
     isLoading: boolean
     error: string
 }
@@ -29,9 +30,8 @@ const TopicProvider = ({ children } : ITopicProvider) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
     const [topics, setTopics] = useState<Topic[]>([])
-
+    const [topic, setTopic] = useState<Topic>({} as Topic)
     const createTopic = async (title: string, content?: string) => {
-
     }
 
     const getTopics = async () => {
@@ -39,7 +39,6 @@ const TopicProvider = ({ children } : ITopicProvider) => {
             setIsLoading(true)
             const response = await axios.get(`https://639a7d283a5fbccb5268037a.mockapi.io/topics`)
             const data: Topic[] = await response.data
-            console.log("response: ", response)
             setTopics(data)
             setIsLoading(false)
         } catch (error: any) {
@@ -50,6 +49,18 @@ const TopicProvider = ({ children } : ITopicProvider) => {
     }
 
     const getTopic = async (_id: string) => {
+        try{
+            setIsLoading(true)
+            const response = await axios.get(`https://639a7d283a5fbccb5268037a.mockapi.io/topics/${_id}`)
+            const data: Topic = await response.data
+            if (data.title) setTopic(data)
+            setIsLoading(false)
+        } catch (error: any) {
+            setIsLoading(false)
+            setError(error.message)
+            console.log("error: ", error)
+        }
+    
     }
 
     const editTopic = async (_id: string, title?: String, content?: string) => {
@@ -71,7 +82,9 @@ const TopicProvider = ({ children } : ITopicProvider) => {
                 deleteTopic, 
                 archiveTopic, 
                 topics,
+                topic,
                 isEditing, 
+                setIsEditing,
                 isLoading,  
                 error, 
                 }
