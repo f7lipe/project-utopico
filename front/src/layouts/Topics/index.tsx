@@ -13,31 +13,37 @@ import useTopic from "../../hooks/useTopic"
 const Topics = () => {
 
     const [open, setOpen] = useState(false)
-    const { topics, getTopics} = useTopic()
+    const { topics, getTopics, isLoading } = useTopic()
 
-    useEffect(() => {   
+    useEffect(() => {
         getTopics()
     }, [])
 
     return (
         <Container>
             <Navbar />
-            {open && <NewTopic setOpen={setOpen}/>}
-            <VStack 
-                    width="70%"
-                    widthMobile="100%" 
-                    margin="60px 20px" 
-                    padding="20px" 
-                    justify="flex-start" 
-                    align="flex-start">
+            {open && <NewTopic setOpen={setOpen} />}
+            <VStack
+                width="70%"
+                widthMobile="100%"
+                margin="60px 20px"
+                padding="20px"
+                justify="flex-start"
+                align="flex-start">
                 <TopicToolbar>
-                    <NewTopicButton onClick={()=> setOpen(!open)}>
-                        <RxText size={30} color={"blue"}/>
+                    <NewTopicButton onClick={() => setOpen(!open)}>
+                        <RxText size={30} color={"blue"} />
                         New Topic
                     </NewTopicButton>
                 </TopicToolbar>
-                <LargeHeading>Home</LargeHeading>
-                <CollectionView items={topics} renderItem={Topic} />
+                {
+                    isLoading ? <LargeHeading>Loading...</LargeHeading> :
+                        <>
+                            <LargeHeading>Home</LargeHeading>
+                            <CollectionView items={topics} renderItem={Topic} />
+                        </>
+                }
+                { topics.length === 0 && !isLoading && <LargeHeading>Write your frist topic</LargeHeading>}
 
             </VStack>
         </Container>
