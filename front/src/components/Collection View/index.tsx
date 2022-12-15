@@ -8,9 +8,9 @@ interface CollectionViewProps<T> {
 }
 
 function CollectionView <T extends unknown>(
-    { renderItem, items, limit }: CollectionViewProps<T>
+    { renderItem, items }: CollectionViewProps<T>
 ) {
-    if (limit) items = items.slice(0, limit);
+    //if (limit) items = items.slice(0, limit);
     return (
         <Container>
             {items.map((item, index) => (
