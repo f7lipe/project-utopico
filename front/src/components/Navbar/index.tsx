@@ -25,15 +25,15 @@ const Navbar = () => {
             </HStack>
             <NavLinks>
                 <NavLink active={isActive(Paths.TOPICS)}>
-                    <RxText size="1.5rem" />
+                    <RxText size="20px" />
                     <Link to={Paths.TOPICS}>Topics</Link>
                 </NavLink>
                 <NavLink active={isActive(Paths.SEARCH)}>
-                    <AiOutlineSearch size="1.5rem" />
+                    <AiOutlineSearch size="20px" />
                     <Link to={Paths.SEARCH}>Search</Link>
                 </NavLink>
                 <NavLink>
-                    <AiOutlineGithub size="1.5rem" />
+                    <AiOutlineGithub size="20px" />
                     <Link to={Paths.GITHUB}>GitHub</Link>
                 </NavLink>
                 <NavLink>

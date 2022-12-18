@@ -2,30 +2,37 @@ import Tiptap from "../../components/Editor"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading, Subtitle } from "../../components/Typografies"
-import useEditor from "../../hooks/useEditor"
 import Reader from "../../components/Reader"
 import { EditButton, TableOfContents, Item } from "./styles"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useLayoutEffect } from "react"
 import Navbar from "../../components/Navbar"
+import useTopic from "../../hooks/useTopic"
+import { useParams } from "react-router-dom"
+import { ProgressBar } from 'react-loader-spinner'
+import generateTOC from "../../helpers/generateTOC"
 
 import { IoInformationCircleOutline, IoTrashOutline, IoArchiveOutline } from "react-icons/io5"
 
 const TopicView = () => {
-    const { editing, setEditing, content } = useEditor()
+    const { id } = useParams<{id: string}>()
+    const { topic, getTopic, isEditing, setIsEditing, status, cleanUp } = useTopic()
+    const { content } = topic 
     const [toc, setToc] = useState<String[] | []>([])
     const handleEdit = () => {
-        setEditing(!editing)
+        setIsEditing(!isEditing)
     }
-
+    
     useEffect(() => {
-        const parser = new DOMParser()
-        const doc = parser.parseFromString(content, "text/html")
-        const headings = doc.querySelectorAll("h2")
-        const toc = [] as string[]
-        headings.forEach((heading) => {
-            toc.push(String(heading.textContent))
-        })
-        setToc(toc)
+        if (id) getTopic(id)
+        return () => {
+            cleanUp()
+        }
+    }, [])
+
+    useLayoutEffect(() => {
+        if (!content) return
+        const newToc = generateTOC(content)
+        setToc(newToc)
     }, [content])
 
     return (
@@ -40,26 +47,28 @@ const TopicView = () => {
                 margin="50px 0 30px 0">
                 <VStack
                     align="flex-start">
-                    <LargeHeading>Topic View</LargeHeading>
+                    <LargeHeading>{topic.title}</LargeHeading>
                     <HStack
                         width="150px"
-                        justify={editing ? "flex-start" : "space-between"}
+                        justify={isEditing ? "flex-start" : "space-between"}
                         align="center"
                         margin="-50px 0 0 0">
                         <EditButton
-                            editing={editing}
+                            editing={isEditing}
                             onClick={handleEdit}>
-                            {editing ? 'Done' : 'Edit'}
+                            {isEditing ? 
+                                (status === 'saving' ? <ProgressBar height="40"  width="80" ariaLabel="progress-bar-loading" borderColor = '#F4442E' barColor = '#51E5FF'/> : 'Done')
+                                : 'Edit'}
                         </EditButton>
                         <IoInformationCircleOutline
-                            size={20} />
+                            size={"20px"} />
                         {
-                            !editing && (
+                            !isEditing && (
                                 <>
                                     <IoArchiveOutline
-                                        size={20} />
+                                        size={"20px"} />
                                     <IoTrashOutline
-                                        size={20} />
+                                        size={"20px"} />
                                 </>
                             )
                         }
@@ -72,7 +81,7 @@ const TopicView = () => {
                 justify="flex-start"
                 margin="0 0 30px 0">
                 {
-                    (!editing && toc?.length > 0) && (
+                    (!isEditing && toc?.length > 0) && (
                         <TableOfContents>
                             <Subtitle>TABLE OF CONTENTS</Subtitle>
                             {
@@ -82,7 +91,7 @@ const TopicView = () => {
                     )
                 }
             </HStack>
-            {editing ? <Tiptap /> : <Reader />}
+            {isEditing && id ? <Tiptap  topicId={id}/> : <Reader />}
         </VStack>
     )
 }

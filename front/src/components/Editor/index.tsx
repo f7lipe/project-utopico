@@ -2,11 +2,19 @@ import { useEditor as tipTapEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import Highlight from '@tiptap/extension-highlight'
-import useEditor from '../../hooks/useEditor'
 import MenuBar from './menu'
+import useTopic from '../../hooks/useTopic'
+import { useState } from 'react'
 
-const Tiptap = () => {
-  const { setContent, content } = useEditor()
+interface Props {
+  topicId: string
+}
+
+const Tiptap = ({ topicId }: Props) => {
+  const { topic, editTopic } = useTopic()
+  const { title, content } = topic
+
+  let timeoutId: NodeJS.Timeout
 
   const editor = tipTapEditor({
     extensions: [
@@ -26,11 +34,11 @@ const Tiptap = () => {
       }),],
     content: content,
     onUpdate: ({ editor }) => {
-      setTimeout(() => {
-        const updatedContent = editor.getHTML()
-        // use api to update content then update state
-        setContent(updatedContent)
-      }, 3000)
+      const updatedContent = editor.getHTML()
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        editTopic(topicId, title, updatedContent)
+      }, 3000);
     }
 
   }, [])
@@ -38,7 +46,7 @@ const Tiptap = () => {
   return (
     <div className='editor' >
       <MenuBar editor={editor} />
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor}/>
     </ div>
   )
 }

@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import useTopic from "../hooks/useTopic"
 
 interface IEditorContext {
     editing: boolean,
@@ -19,8 +20,9 @@ const EditorContext = createContext<IEditorContext>({
 })
 
 const EditorProvider = ({ children } : IEditorProvider) => {
-    const [editing, setEditing] = useState(false)
-    const [content, setContent] = useState(null)
+    const { topic } = useTopic()
+    const [editing, setEditing] = useState(topic.content ? false : true)
+    const [content, setContent] = useState(topic.content)
 
     return (
         <EditorContext.Provider value={{ editing, setEditing, content, setContent }}>

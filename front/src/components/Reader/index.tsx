@@ -1,15 +1,16 @@
-import useEditor from "../../hooks/useEditor"
+import useTopic from "../../hooks/useTopic"
 import { HStack } from "../Stack View/HStack"
 
 const Reader = () => {
-    const { content } = useEditor()
+    const { topic } = useTopic()
+    const { content } = topic
 
     return (
         <HStack width="70%" 
         justify="flex-start"
         widthMobile="100%"
         padding="10px">
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div dangerouslySetInnerHTML={{ __html: String(content) }} />
         </HStack>
     )
 }
