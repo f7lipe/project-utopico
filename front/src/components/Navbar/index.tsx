@@ -24,7 +24,7 @@ const Navbar = () => {
                 <Beta>1.0 BETA</Beta>
             </HStack>
             <NavLinks>
-                <NavLink active={isActive(Paths.TOPICS)}>
+                <NavLink active={(location.pathname.includes(Paths.TOPICS))}>
                     <RxText size="20px" />
                     <Link to={Paths.TOPICS}>Topics</Link>
                 </NavLink>
