@@ -45,7 +45,7 @@ const NavLink = styled.li`
     height: 40px;
     margin: 0 1rem;
     font-weight: 500;
-    background-color: ${(props: NavLinkProps) => props.active ? "#fbf59cba" : "transparent"};
+    background-color: ${(props: NavLinkProps) => props.active ? "#f9f4a0" : "transparent"};
     border-radius: 10px;
     padding: 5px;
     display: flex;
