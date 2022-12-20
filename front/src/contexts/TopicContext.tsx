@@ -38,6 +38,18 @@ const TopicProvider = ({ children } : ITopicProvider) => {
     const [topic, setTopic] = useState<Topic>({} as Topic)
     const [status, setStatus] = useState<'saving' | 'idle' | 'saved' | 'error'>('idle')
     const createTopic = async (title: string, content?: string) => {
+        try {
+            setIsLoading(true)
+            await axios.post(`https://639a7d283a5fbccb5268037a.mockapi.io/topics`, {
+                title,
+                content
+            })
+            setIsLoading(false)
+        } catch (error: any) {
+            setIsLoading(false)
+            setError(error.message)
+            console.log("error: ", error)
+        }
     }
 
     const getTopics = useCallback(()=>{
