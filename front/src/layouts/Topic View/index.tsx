@@ -1,15 +1,15 @@
-import Tiptap from "../../components/Editor"
+import { useEffect, useState, useLayoutEffect } from "react"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
-import Reader from "../../components/Reader"
-import { useEffect, useState, useLayoutEffect } from "react"
-import Navbar from "../../components/Navbar"
-import useTopic from "../../hooks/useTopic"
 import { useParams } from "react-router-dom"
-import generateTOC from "../../helpers/generateTOC"
+import Navbar from "../../components/Navbar"
+import Tiptap from "../../components/Editor"
+import Reader from "../../components/Reader"
 import Toolbar from "../../components/Toolbar"
 import TOC from "../../components/TOC"
+import useTopic from "../../hooks/useTopic"
+import generateTOC from "../../helpers/generateTOC"
 
 const TopicView = () => {
     const { id } = useParams<{id: string}>()
