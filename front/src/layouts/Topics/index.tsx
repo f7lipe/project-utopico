@@ -1,28 +1,27 @@
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
+import { useState, useEffect } from "react"
+import { Container, TopicToolbar, NewTopicButton } from "./styles"
+import { RxText } from "react-icons/rx"
 import CollectionView from "../../components/Collection View"
 import Navbar from "../../components/Navbar"
-import { Container, TopicToolbar, NewTopicButton } from "./styles"
-import Topic from "../../components/Topic"
-import { RxText } from "react-icons/rx"
 import NewTopic from "../../components/New Topic"
-import { useState, useEffect } from "react"
+import Topic from "../../components/Topic"
 import useTopic from "../../hooks/useTopic"
-
 
 const Topics = () => {
 
-    const [open, setOpen] = useState(false)
+    const [addingTopic, setAddingTopic] = useState(false)
     const { topics, getTopics, isLoading } = useTopic()
 
     useEffect(() => {
         getTopics()
-    }, [])
+    }, [getTopics])
 
     return (
         <Container>
             <Navbar />
-            {open && <NewTopic setOpen={setOpen} />}
+            {addingTopic && <NewTopic setOpen={setAddingTopic} />}
             <VStack
                 width="70%"
                 widthMobile="100%"
@@ -31,7 +30,7 @@ const Topics = () => {
                 justify="flex-start"
                 align="flex-start">
                 <TopicToolbar>
-                    <NewTopicButton onClick={() => setOpen(!open)}>
+                    <NewTopicButton onClick={() => setAddingTopic(!addingTopic)}>
                         <RxText size={30} color={"blue"} />
                         New Topic
                     </NewTopicButton>
