@@ -13,16 +13,19 @@ import generateTOC from "../../helpers/generateTOC"
 
 const TopicView = () => {
     const { id } = useParams<{id: string}>()
-    const { topic, getTopic, isEditing, cleanUp } = useTopic()
+    const { topic, getTopic, isEditing, cleanUp, setId } = useTopic()
     const { content } = topic 
     const [toc, setToc] = useState<String[] | []>([])
+
+    if (id) setId(id)
     
     useEffect(() => {
-        if (id) getTopic(id)
+            getTopic()
+   
         return () => {
             cleanUp()
         }
-    }, [])
+    }, [getTopic, cleanUp])
 
     useLayoutEffect(() => {
         if (!content) return
