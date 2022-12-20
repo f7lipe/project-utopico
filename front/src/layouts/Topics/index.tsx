@@ -11,17 +11,17 @@ import useTopic from "../../hooks/useTopic"
 
 const Topics = () => {
 
+    const { topics, getTopics, isLoading, status } = useTopic()
     const [addingTopic, setAddingTopic] = useState(false)
-    const { topics, getTopics, isLoading } = useTopic()
 
     useEffect(() => {
         getTopics()
-    }, [getTopics])
+    }, [getTopics, status])
 
     return (
         <Container>
             <Navbar />
-            {addingTopic && <NewTopic setOpen={setAddingTopic} />}
+            {addingTopic  && <NewTopic setOpen={setAddingTopic} />}
             <VStack
                 width="70%"
                 widthMobile="100%"
