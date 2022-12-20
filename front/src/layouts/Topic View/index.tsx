@@ -1,7 +1,7 @@
 import Tiptap from "../../components/Editor"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
-import { LargeHeading, Subtitle } from "../../components/Typografies"
+import { LargeHeading } from "../../components/Typografies"
 import Reader from "../../components/Reader"
 import { useEffect, useState, useLayoutEffect } from "react"
 import Navbar from "../../components/Navbar"
