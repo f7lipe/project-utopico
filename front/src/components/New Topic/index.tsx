@@ -11,11 +11,12 @@ interface INewTopicProps {
 
 const NewTopic = (props: INewTopicProps) => {
     const { setOpen } = props
-    const { createTopic } = useTopic()
+    const { createTopic, status } = useTopic()
     const [title, setTitle] = useState('')
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         await createTopic(title)
+        setOpen(!(status === "idle"))
     }
 
     return (
