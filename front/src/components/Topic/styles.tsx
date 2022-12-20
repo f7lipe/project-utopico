@@ -14,7 +14,10 @@ const Body = styled.div`
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     &:hover {
-        background-color: #fffce4;
+        background-color: #dfdfdf47;
+        h1{ 
+            text-shadow: 0cm 0.5cm 0.5cm #3f3e3e;
+        }
     }
 `
 
