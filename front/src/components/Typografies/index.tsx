@@ -40,7 +40,6 @@ const Paragraph = styled.p`
 const LargeSerif = styled.h1`
     font-size: 5rem;
     font-weight: lighter;
-    text-shadow: 0cm 0.5cm 0.5cm #3f3e3e;
     font-family: 'Courier New', Courier, monospace;
     `
 
