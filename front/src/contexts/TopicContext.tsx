@@ -17,7 +17,7 @@ interface ITopicContext {
     isEditing: boolean
     setIsEditing: (editing: boolean) => void
     isLoading: boolean
-    status: 'saving' | 'saved' | 'idle' |'error'
+    status: 'saving' | 'saved' | 'creating' | 'idle' |'error'
     error: string
 }
 
@@ -36,14 +36,16 @@ const TopicProvider = ({ children } : ITopicProvider) => {
     const [error, setError] = useState('')
     const [topics, setTopics] = useState<Topic[]>([])
     const [topic, setTopic] = useState<Topic>({} as Topic)
-    const [status, setStatus] = useState<'saving' | 'idle' | 'saved' | 'error'>('idle')
+    const [status, setStatus] = useState<'saving' | 'idle' | 'saved' | 'creating' | 'error'>('idle')
     const createTopic = async (title: string, content?: string) => {
         try {
             setIsLoading(true)
+            setStatus('creating')
             await axios.post(`https://639a7d283a5fbccb5268037a.mockapi.io/topics`, {
                 title,
                 content
             })
+            setStatus('idle')
             setIsLoading(false)
         } catch (error: any) {
             setIsLoading(false)
