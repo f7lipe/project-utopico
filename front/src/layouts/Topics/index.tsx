@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar"
 import NewTopic from "../../components/New Topic"
 import Topic from "../../components/Topic"
 import useTopic from "../../hooks/useTopic"
+import ShimmerHome from "../Shimmers/ShimmerHome"
 
 const Topics = () => {
 
@@ -21,7 +22,7 @@ const Topics = () => {
     return (
         <Container>
             <Navbar />
-            {addingTopic  && <NewTopic setOpen={setAddingTopic} />}
+            {addingTopic && <NewTopic setOpen={setAddingTopic} />}
             <VStack
                 width="70%"
                 widthMobile="100%"
@@ -29,20 +30,20 @@ const Topics = () => {
                 padding="20px"
                 justify="flex-start"
                 align="flex-start">
-                <TopicToolbar>
-                    <NewTopicButton onClick={() => setAddingTopic(!addingTopic)}>
-                        <RxText size={30} color={"blue"} />
-                        New Topic
-                    </NewTopicButton>
-                </TopicToolbar>
                 {
-                    isLoading ? <LargeHeading>Loading...</LargeHeading> :
+                    isLoading ? <ShimmerHome /> :
                         <>
+                            <TopicToolbar>
+                                <NewTopicButton onClick={() => setAddingTopic(!addingTopic)}>
+                                    <RxText size={30} color={"blue"} />
+                                    New Topic
+                                </NewTopicButton>
+                            </TopicToolbar>
                             <LargeHeading>Home</LargeHeading>
                             <CollectionView items={topics} renderItem={Topic} />
                         </>
                 }
-                { topics.length === 0 && !isLoading && <LargeHeading>Write your frist topic</LargeHeading>}
+                {topics.length === 0 && !isLoading && <LargeHeading>Write your frist topic</LargeHeading>}
 
             </VStack>
         </Container>
