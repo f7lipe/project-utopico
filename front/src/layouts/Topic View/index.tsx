@@ -2,7 +2,6 @@ import { useEffect, useState, useLayoutEffect } from "react"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
-import { useParams } from "react-router-dom"
 import Navbar from "../../components/Navbar"
 import Tiptap from "../../components/Editor"
 import Reader from "../../components/Reader"
@@ -12,13 +11,10 @@ import useTopic from "../../hooks/useTopic"
 import generateTOC from "../../helpers/generateTOC"
 
 const TopicView = () => {
-    const { id } = useParams<{id: string}>()
-    const { topic, getTopic, isEditing, cleanUp, setId } = useTopic()
+    const { topic, getTopic, isEditing, cleanUp, id } = useTopic()
     const { content } = topic 
     const [toc, setToc] = useState<String[] | []>([])
 
-    if (id) setId(id)
-    
     useEffect(() => {
             getTopic()
    
