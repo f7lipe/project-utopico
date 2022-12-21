@@ -27,6 +27,7 @@ export const Shimmer = styled.div`
     -webkit-mask:linear-gradient(-60deg,#838383 30%,#aeaeae54,#bebebe 70%) right/300% 100%;
     background-repeat: no-repeat;
     animation: shimmer 1s infinite;
+    transition: all 1.5s ease-in;
   
     @keyframes shimmer {
         100% {-webkit-mask-position:left}
