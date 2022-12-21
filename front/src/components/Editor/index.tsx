@@ -4,13 +4,9 @@ import Placeholder from '@tiptap/extension-placeholder'
 import Highlight from '@tiptap/extension-highlight'
 import MenuBar from './menu'
 import useTopic from '../../hooks/useTopic'
-import { useState } from 'react'
 
-interface Props {
-  topicId: string
-}
 
-const Tiptap = ({ topicId }: Props) => {
+const Tiptap = () => {
   const { topic, editTopic } = useTopic()
   const { title, content } = topic
 
@@ -37,7 +33,7 @@ const Tiptap = ({ topicId }: Props) => {
       const updatedContent = editor.getHTML()
       clearTimeout(timeoutId)
       timeoutId = setTimeout(() => {
-        editTopic(topicId, title, updatedContent)
+        editTopic(title, updatedContent)
       }, 3000);
     }
 
