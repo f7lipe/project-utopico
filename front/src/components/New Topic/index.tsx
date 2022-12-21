@@ -4,6 +4,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai"
 import { HStack } from "../Stack View/HStack"
 import { SmallHeading } from "../Typografies"
 import useTopic from "../../hooks/useTopic"
+import PropagateLoader from "react-spinners/PropagateLoader"
 
 interface INewTopicProps {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -38,10 +39,17 @@ const NewTopic = (props: INewTopicProps) => {
                     <Input
                         type="text"
                         placeholder="Title"
+                        disabled = { status === "creating" }
                         onChange={(e) => setTitle(e.target.value)} />
-                    <Button
+                    <Button disabled = {status === "creating"}
                         type="submit">
-                        Create Topic
+                        { 
+                        status === "creating" ? 
+                            <PropagateLoader 
+                            color="#36d7b7" size={4} /> 
+                            : 
+                            "Create topic"
+                            }
                     </Button>
                 </NewTopicForm>
             </Body>
