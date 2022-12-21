@@ -8,7 +8,7 @@ interface ITopicContext {
     createTopic: (title: string, content?: string) => Promise<void>
     getTopics: () => void
     getTopic: () => void
-    editTopic: (_id: string, title?: String, content?: string) => Promise<void>
+    editTopic: (title?: String, content?: string) => Promise<void>
     deleteTopic?: (_id: string) => Promise<void>
     archiveTopic?: (_id: string) => Promise<void>
     cleanUp: () => void
@@ -89,10 +89,10 @@ const TopicProvider = ({ children } : ITopicProvider) => {
         fetch()
     },[id])
 
-    const editTopic = async (_id: string, title?: String, content?: string) => {
+    const editTopic = async (title?: String, content?: string) => {
         try{
             setStatus('saving')
-            const response = await axios.put(`https://639a7d283a5fbccb5268037a.mockapi.io/topics/${_id}`, {
+            const response = await axios.put(`https://639a7d283a5fbccb5268037a.mockapi.io/topics/${id}`, {
                 title,
                 content
             })
