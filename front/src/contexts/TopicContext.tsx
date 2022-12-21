@@ -1,10 +1,10 @@
 import { createContext, useState, useCallback } from 'react'
+import { useParams } from "react-router-dom"
 import axios from "axios"
 
 
 interface ITopicContext {
     id: string | undefined
-    setId: (id: string) => void
     createTopic: (title: string, content?: string) => Promise<void>
     getTopics: () => void
     getTopic: () => void
@@ -30,7 +30,7 @@ const TopicContext = createContext<ITopicContext | null>(null)
 //const API = process.env.API
 
 const TopicProvider = ({ children } : ITopicProvider) => {
-    const [id, setId] = useState<string | undefined>()
+    const { id } = useParams<{id: string}>()
     const [isEditing, setIsEditing] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
@@ -114,7 +114,6 @@ const TopicProvider = ({ children } : ITopicProvider) => {
 
     const cleanUp = useCallback(() => {
         // if(status === 'saved') {...}
-            setId(undefined)
             setIsEditing(false)
             setIsLoading(false)
             setError('')
@@ -127,7 +126,6 @@ const TopicProvider = ({ children } : ITopicProvider) => {
         <TopicContext.Provider value={
             {   
                 id,
-                setId,
                 createTopic, 
                 getTopics,
                 getTopic, 
