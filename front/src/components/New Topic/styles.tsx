@@ -43,6 +43,9 @@ const Button = styled.button`
     font-weight: 600;
     margin-top: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 const NewTopicForm = styled.form`
