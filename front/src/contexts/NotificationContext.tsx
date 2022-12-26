@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-import { IconType } from 'react-icons/lib'
 
 interface INotificationContext {
     notifications: AppNotification[]
