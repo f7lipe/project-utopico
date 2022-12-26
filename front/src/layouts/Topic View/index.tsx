@@ -10,14 +10,11 @@ import TOC from "../../components/TOC"
 import useTopic from "../../hooks/useTopic"
 import generateTOC from "../../helpers/generateTOC"
 import ShimmerTopicView from "../Shimmers/ShimmerTopicView"
-import useNetwork from "../../hooks/useNetwork"
-import InfoBanner from "../../components/InfoBanner"
 
 const TopicView = () => {
     const { topic, getTopic, isEditing, cleanUp, id, isLoading } = useTopic()
     const { content } = topic
     const [toc, setToc] = useState<String[] | []>([])
-    const {state} = useNetwork()
 
     useEffect(() => {
         getTopic()
@@ -39,7 +36,6 @@ const TopicView = () => {
             align="center"
             width="100%">
             <Navbar />
-            {state.online ? null : <InfoBanner infoType="offline" />}
             {
                 isLoading ? <ShimmerTopicView /> : (
                     <>
