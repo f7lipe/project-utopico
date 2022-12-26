@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState } from "react"
+import useNotification from "../hooks/useNotification"
+import {CiCloudOff} from "react-icons/ci"
 
 interface INetwork{
   state: {
@@ -21,6 +23,8 @@ const NetworkContext = createContext<INetwork|null>(null)
 
 declare const navigator: any;
 const NetworkProvider = ({children} : INetworkProvider) =>{
+
+  const { addNotification, removeNotification } = useNotification()
     
     function getNetworkConnection() {
         return (
@@ -55,20 +59,29 @@ const NetworkProvider = ({children} : INetworkProvider) =>{
         };
       });
     useEffect(() => {
-     const handleOnline = () => {
-          setState((prevState: any) => ({
-            ...prevState,
-            online: true,
-            since: new Date().toString(),
-          }));
-        };
-    const handleOffline = () => {
-          setState((prevState: any) => ({
-            ...prevState,
-            online: false,
-            since: new Date().toString(),
-          }));
-        };
+      const notification: AppNotification = {
+        notificationType: "offline",
+        message: "You are offline",
+        resolved: false,
+        isTemporary: false,
+        icon: CiCloudOff 
+      }
+      const handleOffline = () => {
+        setState((prevState: any) => ({
+          ...prevState,
+          online: false,
+          since: new Date().toString(),
+        }));
+        addNotification(notification)
+      };
+      const handleOnline = () => {
+           setState((prevState: any) => ({
+             ...prevState,
+             online: true,
+             since: new Date().toString(),
+           }));
+          removeNotification(notification)
+         };
     const handleConnectionChange = () => {
           setState((prevState: any) => ({
             ...prevState,
