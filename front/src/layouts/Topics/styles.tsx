@@ -13,28 +13,13 @@ const TopicToolbar = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 70px;
+    min-height: 85px;
     position: sticky;
     top: 80px;
     background-color: #fff;
-    
-    padding: 0 20px;  
-`;
-
-const NewTopicButton = styled.button`
-    background-color: #fff;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    color: #000;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-        background-color: #e2e2e2;
-    }
+    box-shadow: 0px 20px 20px -20px #d2d1d1; 
 `;
 
 
-export { Container, TopicToolbar, NewTopicButton }
+
+export { Container, TopicToolbar }
