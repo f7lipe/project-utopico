@@ -1,8 +1,7 @@
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
-import { useState, useEffect } from "react"
-import { Container, TopicToolbar, NewTopicButton } from "./styles"
-import { RxText } from "react-icons/rx"
+import { useEffect } from "react"
+import { Container, TopicToolbar } from "./styles"
 import CollectionView from "../../components/Collection View"
 import Navbar from "../../components/Navbar"
 import NewTopic from "../../components/New Topic"
@@ -13,16 +12,16 @@ import ShimmerHome from "../Shimmers/ShimmerHome"
 const Topics = () => {
 
     const { topics, getTopics, isLoading, status } = useTopic()
-    const [addingTopic, setAddingTopic] = useState(false)
+
+    const reload = status === 'created'
 
     useEffect(() => {
         getTopics()
-    }, [getTopics, status])
+    }, [getTopics, reload])
 
     return (
         <Container>
             <Navbar />
-            {addingTopic && <NewTopic setOpen={setAddingTopic} />}
             <VStack
                 width="70%"
                 widthMobile="100%"
@@ -34,12 +33,9 @@ const Topics = () => {
                     isLoading ? <ShimmerHome /> :
                         <>
                             <TopicToolbar>
-                                <NewTopicButton onClick={() => setAddingTopic(!addingTopic)}>
-                                    <RxText size={30} color={"blue"} />
-                                    New Topic
-                                </NewTopicButton>
+                                <NewTopic />
                             </TopicToolbar>
-                            <LargeHeading>Home</LargeHeading>
+                            <LargeHeading>Brand New</LargeHeading>
                             <CollectionView items={topics} renderItem={Topic} />
                         </>
                 }
