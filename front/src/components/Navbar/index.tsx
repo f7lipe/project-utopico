@@ -28,17 +28,21 @@ const Navbar = () => {
                     <RxText size="20px" />
                     <Link to={Paths.TOPICS}>Topics</Link>
                 </NavLink>
+                 {/* 
                 <NavLink active={isActive(Paths.SEARCH)}>
                     <AiOutlineSearch size="20px" />
                     <Link to={Paths.SEARCH}>Search</Link>
                 </NavLink>
+                 */}
                 <NavLink>
                     <AiOutlineGithub size="20px" />
                     <Link to={Paths.GITHUB}>GitHub</Link>
                 </NavLink>
+                {/* 
                 <NavLink>
                     <Link to={Paths.LOGOUT}>Logout</Link>
                 </NavLink>
+                */}
             </NavLinks>
         </Nav>
     );
