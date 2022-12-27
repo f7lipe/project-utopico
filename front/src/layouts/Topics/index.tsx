@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { Container, TopicToolbar } from "./styles"
 import CollectionView from "../../components/Collection View"
 import Navbar from "../../components/Navbar"
-import NewTopic from "../../components/New Topic"
+import Toolbar from "./Topic Toolbar"
 import Topic from "../../components/Topic"
 import useTopic from "../../hooks/useTopic"
 import ShimmerHome from "../Shimmers/ShimmerHome"
@@ -29,17 +29,19 @@ const Topics = () => {
                 padding="20px"
                 justify="flex-start"
                 align="flex-start">
-                {
-                    isLoading ? <ShimmerHome /> :
+                {isLoading && <ShimmerHome />}
+                {!isLoading && <Toolbar />}
+                {!isLoading && topics.length > 0 ?
+                    (
                         <>
-                            <TopicToolbar>
-                                <NewTopic />
-                            </TopicToolbar>
                             <LargeHeading>Brand New</LargeHeading>
                             <CollectionView items={topics} renderItem={Topic} />
                         </>
-                }
-                {topics.length === 0 && !isLoading && <LargeHeading>Write your frist topic</LargeHeading>}
+                    ) 
+                    : 
+                    <LargeHeading>Write your frist topic</LargeHeading>
+                    }
+                { /* TODO: implements offline page  */}
 
             </VStack>
         </Container>
