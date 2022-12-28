@@ -1,6 +1,9 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-const Body = styled.div`
+const Body = styled(Link)`
+    text-decoration: none;
+    color: #000000;
     width: 170px;
     height: 170px;
     margin:5px;
