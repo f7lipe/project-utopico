@@ -16,5 +16,7 @@ export const VStack = styled.section`
 
     @media (max-width: 768px) {
         width: ${(props: StackViewProps) => props.widthMobile};
+        justify-content: ${(props: StackViewProps) => props.mobileJustify};
+        align-items: ${(props: StackViewProps) => props.mobileAlign};
     }
 `;
