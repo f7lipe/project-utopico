@@ -9,7 +9,7 @@ import Toolbar from "../../components/Toolbar"
 import TOC from "../../components/TOC"
 import useTopic from "../../hooks/useTopic"
 import generateTOC from "../../helpers/generateTOC"
-import ShimmerTopicView from "../Shimmers/ShimmerTopicView"
+import ShimmerTopicView from "./Shimmer/ShimmerTopicView"
 
 const TopicView = () => {
     const { topic, getTopic, isEditing, cleanUp, id, isLoading } = useTopic()

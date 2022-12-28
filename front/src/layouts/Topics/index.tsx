@@ -1,18 +1,16 @@
 import { VStack } from "../../components/Stack View/VStack"
-import { LargeHeading } from "../../components/Typografies"
 import { useEffect } from "react"
-import { Container, TopicToolbar } from "./styles"
+import { LargeHeading } from "../../components/Typografies"
 import CollectionView from "../../components/Collection View"
-import Navbar from "../../components/Navbar"
+import useTopic from "../../hooks/useTopic"
+import ShimmerTopics from "./Shimmer/ShimmerTopics"
 import Toolbar from "./Topic Toolbar"
 import Topic from "../../components/Topic"
-import useTopic from "../../hooks/useTopic"
-import ShimmerHome from "../Shimmers/ShimmerHome"
+import InfoBanner from "../../components/Informative Banner"
+import write_new_post from "../../assets/write_new_post.svg"
 
 const Topics = () => {
-
     const { topics, getTopics, isLoading, status } = useTopic()
-
     const reload = status === 'created'
 
     useEffect(() => {
@@ -20,31 +18,33 @@ const Topics = () => {
     }, [getTopics, reload])
 
     return (
-        <Container>
-            <Navbar />
-            <VStack
-                width="70%"
-                widthMobile="100%"
-                margin="60px 20px"
-                padding="20px"
-                justify="flex-start"
-                align="flex-start">
-                {isLoading && <ShimmerHome />}
-                {!isLoading && <Toolbar />}
-                {!isLoading && topics.length > 0 ?
-                    (
-                        <>
-                            <LargeHeading>Brand New</LargeHeading>
-                            <CollectionView items={topics} renderItem={Topic} />
-                        </>
-                    ) 
-                    : 
-                    <LargeHeading>Write your frist topic</LargeHeading>
-                    }
-                { /* TODO: implements offline page  */}
+        <VStack
+            width="70%"
+            widthMobile="100%"
+            margin="0 20px"
+            padding="20px"
+            justify="flex-start"
+            align="flex-start">
+            {isLoading && <ShimmerTopics />}
+            {!isLoading && <Toolbar />}
+            {!isLoading && topics.length > 0 &&
+                (
+                    <>
+                        <LargeHeading>Brand New</LargeHeading>
+                        <CollectionView items={topics} renderItem={Topic} />
+                    </>
+                )
 
-            </VStack>
-        </Container>
+            }
+            {!isLoading && topics.length === 0 &&
+                <InfoBanner
+                    image={write_new_post}
+                    title="You haven't written any topic yet"
+                    subtitle="Create new topics and bring your ideas" />
+            }
+
+
+        </VStack>
     )
 }
 

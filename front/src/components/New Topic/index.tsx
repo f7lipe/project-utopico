@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 import useNetwork from "../../hooks/useNetwork";
 
 const NewTopic = () => {
-    const { createTopic, status, error } = useTopic()
+    const { createTopic, status } = useTopic()
     const {state} = useNetwork()
     const offline = !state.online
     const formik = useFormik({
@@ -40,8 +40,8 @@ const NewTopic = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 disabled={status === "creating" || offline}
-                error={formik.touched.title && Boolean(formik.errors.title) || Boolean(error)}
-                helperText={formik.touched.title && formik.errors.title || error}
+                error={formik.touched.title && Boolean(formik.errors.title)}
+                helperText={formik.touched.title && formik.errors.title}
             />
             <Button
                 visible={formik.values.title.length > 2}

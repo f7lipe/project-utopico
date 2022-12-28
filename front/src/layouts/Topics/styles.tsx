@@ -17,9 +17,7 @@ const TopicToolbar = styled.div`
     position: sticky;
     top: 80px;
     background-color: #fff;
-    box-shadow: 0px 20px 20px -20px #d2d1d1; 
+    box-shadow: 0 20px 20px -20px #d2d1d1; 
 `;
-
-
 
 export { Container, TopicToolbar }

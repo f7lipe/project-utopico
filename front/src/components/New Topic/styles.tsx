@@ -4,7 +4,7 @@ interface Props {
 }
 
 const Button = styled.button`
-    width: 100%;
+    width: 150px;
     height: 40px;
     border: none;
     border-radius: 10px;
@@ -21,19 +21,19 @@ const Button = styled.button`
         background-color: #ccc;
         cursor: not-allowed;
     }
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `
 
 const NewTopicForm = styled.form`
-    width: 30%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     padding-bottom: 10px;
     margin-top: 10px;
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 `
 
 
