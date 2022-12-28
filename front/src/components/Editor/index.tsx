@@ -1,7 +1,13 @@
-import { useEditor as tipTapEditor, EditorContent } from '@tiptap/react'
+import { useEditor , EditorContent } from '@tiptap/react'
+import { lowlight } from 'lowlight/lib/core'
 import StarterKit from '@tiptap/starter-kit'
 import Placeholder from '@tiptap/extension-placeholder'
 import Highlight from '@tiptap/extension-highlight'
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import css from 'highlight.js/lib/languages/css'
+import js from 'highlight.js/lib/languages/javascript'
+import ts from 'highlight.js/lib/languages/typescript'
+import html from 'highlight.js/lib/languages/xml'
 import MenuBar from './menu'
 import useTopic from '../../hooks/useTopic'
 
@@ -12,10 +18,19 @@ const Tiptap = () => {
 
   let timeoutId: NodeJS.Timeout
 
-  const editor = tipTapEditor({
+  lowlight.registerLanguage('html', html)
+  lowlight.registerLanguage('css', css)
+  lowlight.registerLanguage('js', js)
+  lowlight.registerLanguage('ts', ts)
+
+
+  const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({ codeBlock: false }),
       Highlight,
+      CodeBlockLowlight.configure({
+        lowlight,
+      }) as any,
       Placeholder.configure({
         // Use a placeholder:
         placeholder: 'Write something wonderful. And put it out there.',
@@ -27,7 +42,8 @@ const Tiptap = () => {
 
         //   return 'Can you add some further context?'
         // },
-      }),],
+      }),
+    ],
     content: content,
     onUpdate: ({ editor }) => {
       const updatedContent = editor.getHTML()
