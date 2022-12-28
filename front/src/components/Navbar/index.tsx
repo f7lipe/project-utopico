@@ -1,7 +1,7 @@
 import { Nav, Beta, NavLinks, NavLink } from "./styles"
 import { Link, useLocation } from "react-router-dom"
 import { HStack } from "../Stack View/HStack"
-import { AiOutlineGithub, AiOutlineSearch } from "react-icons/ai"
+import { AiOutlineGithub, /*AiOutlineSearch*/ } from "react-icons/ai"
 import { RxText } from "react-icons/rx"
 
 enum Paths {
@@ -13,9 +13,11 @@ enum Paths {
 
 const Navbar = () => {
     const location = useLocation();
+    /*
     const isActive = (buttonPath: string) => {
         return location.pathname === buttonPath;
       }
+      */
 
     return (
         <Nav>
