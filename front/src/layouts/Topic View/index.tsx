@@ -3,12 +3,12 @@ import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
 import Navbar from "../../components/Navbar"
-import Tiptap from "../../components/Editor"
+import Editor from "../../features/editor"
 import Reader from "../../components/Reader"
 import Toolbar from "../../components/Toolbar"
 import TOC from "../../components/TOC"
 import useTopic from "../../hooks/useTopic"
-import generateTOC from "../../helpers/generateTOC"
+import generateTOC from "../../utils/generateTOC"
 import ShimmerTopicView from "./Shimmer/ShimmerTopicView"
 
 const TopicView = () => {
@@ -59,7 +59,7 @@ const TopicView = () => {
                                 (!isEditing && toc?.length > 0) && <TOC toc={toc} />
                             }
                         </HStack>
-                        {isEditing && id ? <Tiptap /> : <Reader />}
+                        {isEditing && id ? <Editor /> : <Reader />}
                     </>
                 )
             }

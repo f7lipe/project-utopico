@@ -1,6 +1,6 @@
 import { HStack } from "../../../components/Stack View/HStack"
 import { VStack } from "../../../components/Stack View/VStack"
-import { Shimmer } from "../../Shimmer Effect"
+import { Shimmer } from "../../../components/Shimmer Effect"
 
 const ShimmerTopics = () => {
     return (

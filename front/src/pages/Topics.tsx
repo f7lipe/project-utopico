@@ -1,9 +1,9 @@
-import { Container } from "../../layouts/Topics/styles"
-import Navbar from "../../components/Navbar"
-import InfoBanner from "../../components/Informative Banner"
-import useNetwork from "../../hooks/useNetwork"
-import Topics from "../../layouts/Topics"
-import search_signal from "../../assets/search_signal.svg"
+import { Container } from "../layouts/Topics/styles"
+import Navbar from "../components/Navbar"
+import InfoBanner from "../components/Informative Banner"
+import useNetwork from "../hooks/useNetwork"
+import Topics from "../layouts/Topics"
+import search_signal from "../assets/search_signal.svg"
 
 
 const TopicsPage = () => {

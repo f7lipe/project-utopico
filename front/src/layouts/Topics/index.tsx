@@ -5,7 +5,7 @@ import CollectionView from "../../components/Collection View"
 import useTopic from "../../hooks/useTopic"
 import ShimmerTopics from "./Shimmer/ShimmerTopics"
 import Toolbar from "./Topic Toolbar"
-import Topic from "../../components/Topic"
+import TopicTile from "../../components/Topic Tile"
 import InfoBanner from "../../components/Informative Banner"
 import write_new_post from "../../assets/write_new_post.svg"
 
@@ -31,7 +31,7 @@ const Topics = () => {
                 (
                     <>
                         <LargeHeading>Brand New</LargeHeading>
-                        <CollectionView items={topics} renderItem={Topic} />
+                        <CollectionView items={topics} renderItem={TopicTile} />
                     </>
                 )
 

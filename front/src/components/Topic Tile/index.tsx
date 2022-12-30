@@ -3,7 +3,7 @@ import { VStack } from "../Stack View/VStack"
 import { Body } from "./styles"
 import {  SmallHeading, LargeSerif } from "../Typografies"
 
-const Topic = ({ title, logo, id }: Topic) => {
+const TopicTile = ({ title, logo, id }: Topic) => {
 
     return (
         <Body to={`/topics/${id}`}>
@@ -24,4 +24,4 @@ const Topic = ({ title, logo, id }: Topic) => {
     )
 }
 
-export default Topic
+export default TopicTile
