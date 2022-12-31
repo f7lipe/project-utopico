@@ -1,4 +1,4 @@
-export default (
+ const generateTOC =  (
     content: string,
     selector: "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 ) => {
@@ -11,3 +11,5 @@ export default (
     })
     return toc
 }
+
+export default generateTOC
