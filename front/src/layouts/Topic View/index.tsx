@@ -1,40 +1,30 @@
-import { useEffect, useState, useLayoutEffect } from "react"
+import { useEffect } from "react"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
 import Navbar from "../../components/Navbar"
 import Editor from "../../features/editor"
-import Reader from "../../components/Reader"
+import Reader from "../../features/reader"
 import Toolbar from "../../components/Toolbar"
-import TOC from "../../components/TOC"
 import useTopic from "../../hooks/useTopic"
-import generateTOC from "../../utils/generateTOC"
 import ShimmerTopicView from "./Shimmer/ShimmerTopicView"
 
 const TopicView = () => {
     const { topic, getTopic, isEditing, cleanUp, id, isLoading } = useTopic()
     const { content } = topic
-    const [toc, setToc] = useState<String[] | []>([])
 
     useEffect(() => {
         getTopic()
 
-        return () => {
-            cleanUp()
-        }
-    }, [getTopic, cleanUp])
+        return () => cleanUp()
 
-    useLayoutEffect(() => {
-        if (!content) return
-        const newToc = generateTOC(content)
-        setToc(newToc)
-    }, [content])
-    
+    }, [getTopic, cleanUp])
 
     return (
         <VStack
             align="center"
-            width="100%">
+            width="100%"
+            margin="0 0 80px 0">
             <Navbar />
             {
                 isLoading ? <ShimmerTopicView /> : (
@@ -42,24 +32,14 @@ const TopicView = () => {
                         <HStack
                             widthMobile="95%"
                             width="70%"
-                            justify="flex-start"
-                            margin="50px 0 30px 0">
+                            justify="flex-start">
                             <VStack
                                 align="flex-start">
                                 <LargeHeading>{topic.title}</LargeHeading>
                                 <Toolbar />
                             </VStack>
                         </HStack>
-                        <HStack
-                            widthMobile="95%"
-                            width="70%"
-                            justify="flex-start"
-                            margin="0 0 30px 0">
-                            {
-                                (!isEditing && toc?.length > 0) && <TOC toc={toc} />
-                            }
-                        </HStack>
-                        {isEditing && id ? <Editor /> : <Reader />}
+                        {isEditing && id ? <Editor /> : <Reader content={String(content)} />}
                     </>
                 )
             }

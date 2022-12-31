@@ -1,12 +1,12 @@
 import { TableOfContents, Item } from "./styles"
-import { Subtitle } from "../Typografies"
+import { Subtitle } from "../../../components/Typografies"
 
-const TOC = ({ toc }: { toc: String[] }) => {
+const TOC = ({ items }: { items: String[] }) => {
     return (
         <TableOfContents>
             <Subtitle>TABLE OF CONTENTS</Subtitle>
             {
-                toc.map((item, index) => (<Item key={index}>{item}</Item>))
+                items.map((item, index) => (<Item key={index}>{item}</Item>))
             }
         </TableOfContents>
     )
