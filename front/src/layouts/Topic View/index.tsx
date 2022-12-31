@@ -10,7 +10,7 @@ import useTopic from "../../hooks/useTopic"
 import ShimmerTopicView from "./Shimmer/ShimmerTopicView"
 
 const TopicView = () => {
-    const { topic, getTopic, isEditing, cleanUp, id, isLoading } = useTopic()
+    const { topic, getTopic, isEditing, cleanUp, id, isLoading, editTopic } = useTopic()
     const { content } = topic
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const TopicView = () => {
                                 <Toolbar />
                             </VStack>
                         </HStack>
-                        {isEditing && id ? <Editor /> : <Reader content={String(content)} />}
+                        {isEditing && id ? <Editor content={String(content)} updateFunction={editTopic} /> : <Reader content={String(content)} />}
                     </>
                 )
             }

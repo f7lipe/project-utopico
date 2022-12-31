@@ -1,12 +1,14 @@
 import tiptap from '../lib/tiptap'
 import MenuBar from '../components/Menu'
-import useTopic from '../../../hooks/useTopic'
 import { EditorContent } from '@tiptap/react'
 
-const Editor = () => {
-  const { topic, editTopic } = useTopic()
-  const { content } = topic
-  const tiptapEditor = tiptap(content, editTopic) 
+const Editor = (
+  { content, updateFunction } : 
+  {
+    content: string, 
+    updateFunction: (content: string) => void 
+  }) => {
+  const tiptapEditor = tiptap(content, updateFunction) 
   
   return (
     <div className='editor' >
