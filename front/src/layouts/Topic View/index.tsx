@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { HStack } from "../../components/Stack View/HStack"
 import { VStack } from "../../components/Stack View/VStack"
 import { LargeHeading } from "../../components/Typografies"
-import Navbar from "../../components/Navbar"
 import Editor from "../../features/editor"
 import Reader from "../../features/reader"
 import Toolbar from "../../components/Toolbar"
@@ -25,7 +24,6 @@ const TopicView = () => {
             align="center"
             width="100%"
             margin="0 0 80px 0">
-            <Navbar />
             {
                 isLoading ? <ShimmerTopicView /> : (
                     <>

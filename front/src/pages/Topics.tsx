@@ -1,5 +1,4 @@
 import { Container } from "../layouts/Topics/styles"
-import Navbar from "../components/Navbar"
 import InfoBanner from "../components/Informative Banner"
 import useNetwork from "../hooks/useNetwork"
 import Topics from "../layouts/Topics"
@@ -14,7 +13,7 @@ const TopicsPage = () => {
 
     return (
         <Container>
-            <Navbar />
+
             {offline ?
                 <InfoBanner
                     image={search_signal}
