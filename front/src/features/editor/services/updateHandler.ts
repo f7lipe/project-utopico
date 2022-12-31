@@ -8,9 +8,11 @@ interface Props {
 // This is a dummy timeout to avoid the error "Cannot read property 'hasRef' of undefined"
 let timeoutId: NodeJS.Timeout = setTimeout(() => {}, 0)
 
-export default ({updatedContent, handlerFunction} : Props) => {
+const updateHandler = ({updatedContent, handlerFunction} : Props) => {
     clearTimeout(timeoutId)
     timeoutId = setTimeout(() => {
        handlerFunction(updatedContent)
     }, UPDATE_INTERVAL);
 }
+
+export default updateHandler
