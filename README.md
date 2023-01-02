@@ -87,7 +87,7 @@ Este projeto é divido em duas partes:
 1. Backend (pasta server) << disponível em breve >>
 2. Frontend (pasta front)
 
-⚠️ O Frontend necessita que o Backend esteja sendo executado para funcionar. Enquanto o Backend não está disponível no repositório, uma mock API pode ser utilizada. Você pode utilizar o conteúdo de ``` https://639a7d283a5fbccb5268037a.mockapi.io  ```. 
+⚠️ O Frontend necessita que o Backend esteja sendo executado para funcionar. Enquanto o Backend não está disponível no repositório, uma mock API pode ser utilizada. Você pode utilizar o conteúdo de ```https://639a7d283a5fbccb5268037a.mockapi.io```. 
 
 ### Pré-requisitos
 
