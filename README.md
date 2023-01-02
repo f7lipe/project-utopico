@@ -83,9 +83,9 @@ O layout da aplicação está disponível no Figma:
 
 ## 🚀 Como executar o projeto
 
-Este projeto é divido em três partes:
+Este projeto é divido em duas partes:
 1. Backend (pasta server) << disponível em breve >>
-2. Frontend (pasta frontend)
+2. Frontend (pasta front)
 
 ⚠️ O Frontend necessita que o Backend esteja sendo executado para funcionar. Enquanto o Backend não está disponível no repositório, uma mock API pode ser utilizada. Você pode utilizar o conteúdo de ``` https://639a7d283a5fbccb5268037a.mockapi.io  ```. 
 
@@ -118,9 +118,9 @@ $ npm install
 $  touch .env 
 
 # no arquivo .env criado adicione uma variável de ambiente com  a url da API 
- $  nano .env 
+$  nano .env 
 
-  API_URL = "https://639a7d283a5fbccb5268037a.mockapi.io"
+API_URL = "https://639a7d283a5fbccb5268037a.mockapi.io"
 
 # salve a alteração
 
@@ -145,7 +145,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[Tiptap](https://tiptap.dev)**
 -   **[Styled-components](https://styled-components.com/)**
 
-> Veja o arquivo  [package.json](https://github.com/f7lipe/project-utopico/blob/master/frontend/package.json)
+> Veja o arquivo  [package.json](https://github.com/f7lipe/project-utopico/blob/master/front/package.json)
 
 ####  **Server (em breve)**  
 
@@ -157,8 +157,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   Markdown:  **[StackEdit](https://stackedit.io/)**,  **[Markdown Emoji](https://gist.github.com/rxaviers/7360908)**
 -   Teste de API:  **[Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)**
 -   Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**
-
-
 ---
 
 
