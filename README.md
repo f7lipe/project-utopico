@@ -74,9 +74,9 @@ O layout da aplicação está disponível no Figma:
 ### Desktop
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="Topics" title="#Topics" src="./assets/topics.svg" width="400px">
+  <img alt="Topics" title="#Topics" src="./assets/topics.png" width="400px">
 
-  <img alt="Topic Editor" title="#TopicEditor" src="./assets/topic-editor.svg" width="400px">
+  <img alt="Topic Editor" title="#TopicEditor" src="./assets/topic-editor.png" width="400px">
 </p>
 
 ---
