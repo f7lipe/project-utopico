@@ -2,7 +2,7 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/f7lipe/project-utopico?color=%2304D361">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/f7lipr/project-utopico">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/f7lipe/project-utopico">
   
   <a href="https://github.com/f7lipe/project-utopico/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/f7lipe/project-utopico">
@@ -153,14 +153,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 #### [](https://github.com/tgmarinho/Ecoleta#utilit%C3%A1rios)**Utilitários**
 
 -   Protótipo:  **[Figma](https://www.figma.com/)**  →  **[Protótipo (Utópico)](https://www.figma.com/file/afIgOzHkQDdTvsEokD2lbV/Project-Ut%C3%B3pico?node-id=0%3A1&t=xVvOkXc2JO8UWHuw-1)**
--   API:  **[IBGE API](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1)**  →  **[API de UFs](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-UFs-estadosGet)**,  **[API de Municípios](https://servicodados.ibge.gov.br/api/docs/localidades?versao=1#api-Municipios-estadosUFMunicipiosGet)**
--   Maps:  **[Leaflet](https://react-leaflet.js.org/en/)**
--   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**  → Extensions:  **[SQLite](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite)**
+-   Editor:  **[Visual Studio Code](https://code.visualstudio.com/)**  → Extensions:  **[vscode-styled-components](https://marketplace.visualstudio.com/items?itemName=styled-components.vscode-styled-components)**
 -   Markdown:  **[StackEdit](https://stackedit.io/)**,  **[Markdown Emoji](https://gist.github.com/rxaviers/7360908)**
--   Commit Conventional:  **[Commitlint](https://github.com/conventional-changelog/commitlint)**
--   Teste de API:  **[Insomnia](https://insomnia.rest/)**
--   Ícones:  **[Feather Icons](https://feathericons.com/)**,  **[Font Awesome](https://fontawesome.com/)**
--   Fontes:  **[Ubuntu](https://fonts.google.com/specimen/Ubuntu)**,  **[Roboto](https://fonts.google.com/specimen/Roboto)**
+-   Teste de API:  **[Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)**
+-   Fontes: **[Roboto](https://fonts.google.com/specimen/Roboto)**
 
 
 ---
