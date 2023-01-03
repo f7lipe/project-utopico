@@ -74,9 +74,9 @@ O layout da aplicação está disponível no Figma:
 ### Desktop
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
-  <img alt="Topics" title="#Topics" src="./assets/topics.svg" width="400px">
+  <img alt="Topics" title="#Topics" src="./assets/topics.png" width="400px">
 
-  <img alt="Topic Editor" title="#TopicEditor" src="./assets/topic-editor.svg" width="400px">
+  <img alt="Topic Editor" title="#TopicEditor" src="./assets/topic-editor.png" width="400px">
 </p>
 
 ---
@@ -109,16 +109,16 @@ $ git clone git@github.com:f7lipe/project-utopico
 $ cd project-utopico
 
 # Vá para a pasta da aplicação Front End
-$ cd frontend
+$ cd front
 
 # Instale as dependências
 $ npm install
 
 # crie uma variável de ambiente
-$  touch .env 
+$ touch .env 
 
 # no arquivo .env criado adicione uma variável de ambiente com  a url da API 
-$  nano .env 
+$ nano .env 
 
 API_URL = "https://639a7d283a5fbccb5268037a.mockapi.io"
 
