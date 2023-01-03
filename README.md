@@ -68,7 +68,7 @@ O layout da aplicação está disponível no Figma:
 <p align="center">
   <img alt="Topics" title="#Topics" src="./assets/topics-mobile.png" width="200px">
 
-  <img alt="Topic View" title="#TopicView" src="./assets/topic-view-mobile.svg" width="200px">
+  <img alt="Topic View" title="#TopicView" src="./assets/topic-view-mobile.png" width="200px">
 </p>
 
 ### Desktop
